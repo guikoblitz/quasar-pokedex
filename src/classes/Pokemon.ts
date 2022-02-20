@@ -1,15 +1,15 @@
-export default interface Pokemon {
+export interface Pokemon {
   id: number;
 
   name: string;
 
   image: string;
 
-  types: PokemonType[];
+  type: PokemonType;
 }
 
-interface PokemonType {
+export interface PokemonType {
   primary: string;
 
-  secondary: string;
+  secondary?: string;
 }

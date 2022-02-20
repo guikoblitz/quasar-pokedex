@@ -19,6 +19,7 @@ interface PokemonApiTypeRaw {
 
   url: string;
 }
+
 interface PokemonApiSprite {
   other: PokemonApiSpriteOther;
 }

@@ -1,5 +1,5 @@
 import PokemonService from 'src/services/PokemonService';
-import Pokemon from 'src/classes/Pokemon';
+import { Pokemon, PokemonType } from 'src/classes/Pokemon';
 import { getPokemonIdByUrlString } from 'src/util/AppUtil';
 
 export default {
@@ -18,6 +18,16 @@ export default {
         pokemon.id = pokemonApi.id;
         pokemon.name = pokemonApi.name;
         pokemon.image = pokemonApi.sprites.other['official-artwork'].front_default;
+        pokemon.type = {} as PokemonType;
+
+        for (let index = 0; index < pokemonApi.types.length; index++) {
+          const pokemonType = pokemonApi.types[index];
+          if (pokemonType.slot === 1) {
+            pokemon.type.primary = pokemonType.type.name;
+          } else {
+            pokemon.type.secondary = pokemonType.type.name;
+          }
+        }
 
         pokemons.push(pokemon);
       }
