@@ -1,10 +1,14 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
-      <q-toolbar>
-        <q-toolbar-title class="text-center"> Pokédex </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+    <!-- <q-header elevated> -->
+    <!-- <q-toolbar>
+        <q-toolbar-title class="row justify-between">
+          <q-btn icon="keyboard_backspace" flat color="white" />
+          <div>Pokédex</div>
+          <div style="width: 36px"></div>
+        </q-toolbar-title>
+      </q-toolbar> -->
+    <!-- </q-header> -->
 
     <q-page-container>
       <router-view />
