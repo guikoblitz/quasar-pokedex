@@ -3,9 +3,9 @@ import PokemonApiRaw from 'src/classes/PokemonApiRaw';
 import pokeApi from './Api';
 
 export default {
-  async getPokemons(): Promise<PokemonApiData> {
+  async getPokemons(limit: number, offset: number): Promise<PokemonApiData> {
     try {
-      const response = await pokeApi.get('pokemon');
+      const response = await pokeApi.get('pokemon', { params: { offset, limit } });
       return response.data;
     } catch (e) {
       console.log(e);
