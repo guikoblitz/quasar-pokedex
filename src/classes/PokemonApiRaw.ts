@@ -4,8 +4,21 @@ export default interface PokemonApiRaw {
   name: string;
 
   sprites: PokemonApiSprite;
+
+  types: PokemonApiType[];
 }
 
+interface PokemonApiType {
+  slot: number;
+
+  type: PokemonApiTypeRaw;
+}
+
+interface PokemonApiTypeRaw {
+  name: string;
+
+  url: string;
+}
 interface PokemonApiSprite {
   other: PokemonApiSpriteOther;
 }

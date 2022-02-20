@@ -5,5 +5,11 @@ export default interface Pokemon {
 
   image: string;
 
-  // types: Type[]
+  types: PokemonType[];
+}
+
+interface PokemonType {
+  primary: string;
+
+  secondary: string;
 }

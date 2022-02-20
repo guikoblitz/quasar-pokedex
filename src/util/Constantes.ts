@@ -1,4 +1,4 @@
-import PokemonType from 'src/classes/PokemonType';
+import PokemonTypeColor from 'src/classes/PokemonTypeColor';
 
 export const POKEMON_TYPES = {
   ROCK: '#B6A136',
@@ -19,4 +19,4 @@ export const POKEMON_TYPES = {
   NORMAL: '#A8A77A',
   POISON: '#A33EA1',
   PSYCHIC: '#F95587',
-} as PokemonType;
+} as PokemonTypeColor;
