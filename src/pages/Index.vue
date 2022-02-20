@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts">
+import PokemonCtrl from 'src/controllers/PokemonCtrl';
 import { defineComponent } from 'vue';
-import PokemonService from 'src/services/PokemonService';
 
 export default defineComponent({
   name: 'PageIndex',
@@ -12,7 +12,7 @@ export default defineComponent({
     return {};
   },
   async mounted() {
-    const pokemons = await PokemonService.getPokemons();
+    const pokemons = await PokemonCtrl.getPokemons();
     console.log(pokemons);
   },
 });
