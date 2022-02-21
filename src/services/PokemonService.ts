@@ -3,20 +3,26 @@ import PokemonApiRaw from 'src/classes/PokemonApiRaw';
 import pokeApi from './Api';
 
 export default {
-  async getPokemons(limit: number, offset: number): Promise<PokemonApiData> {
+  async getPokemons(limit: number, offset: number): Promise<PokemonApiData | undefined> {
     try {
       const response = await pokeApi.get('pokemon', { params: { offset, limit } });
-      return response.data;
+      if (response.status === 200) {
+        return response.data;
+      }
+      return undefined;
     } catch (e) {
       console.log(e);
       throw e;
     }
   },
 
-  async getPokemonById(id: number): Promise<PokemonApiRaw> {
+  async getPokemonByFilter(filter: number | string): Promise<PokemonApiRaw | undefined> {
     try {
-      const response = await pokeApi.get(`pokemon/${id}`);
-      return response.data;
+      const response = await pokeApi.get(`pokemon/${filter}`);
+      if (response.status === 200) {
+        return response.data;
+      }
+      return undefined;
     } catch (e) {
       console.log(e);
       throw e;
