@@ -2,7 +2,7 @@
   "name": "quasar-pokedex",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "productName": "Quasar Pokedex",
   "author": "guikoblitz <guilhermerk_contato@hotmail.com>",
   "private": true,
   "scripts": {
@@ -16,7 +16,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0",
-    "vue": "^3.0.0",
+    "vue": "^3.2.31",
     "vue-router": "^4.0.0",
     "vuex": "^4.0.1"
   },
