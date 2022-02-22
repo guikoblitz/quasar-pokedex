@@ -22,7 +22,13 @@
     </div>
     <div class="q-pt-sm row q-col-gutter-sm">
       <q-list v-for="pokemon in pokemonList" :key="pokemon.id" class="col-12 col-md-4">
-        <q-item clickable v-ripple class="pokemon-card q-pl-sm q-pt-xs row" :style="pokemonCardBackground(pokemon.type.primary)">
+        <q-item
+          clickable
+          v-ripple
+          class="pokemon-card q-pl-sm q-pt-xs row"
+          :style="pokemonCardBackground(pokemon.type.primary)"
+          @click="directToPokemonDetails(pokemon)"
+        >
           <div class="col-3 q-pb-xs">
             <q-img :src="pokemon.image" class="col-4" style="height: 80px; width: 80px" />
           </div>

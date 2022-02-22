@@ -6,7 +6,7 @@ import { POKEMON_TYPES_CARD } from 'src/util/Constantes';
 import { Loading } from 'quasar';
 
 export default defineComponent({
-  name: 'PageIndex',
+  name: 'MainPage',
   data() {
     return {
       pokemonList: [] as Pokemon[],
@@ -78,6 +78,13 @@ export default defineComponent({
     getTypeImage(type: string): string {
       const typeLower = type.toLowerCase();
       return `types/${typeLower}.svg`;
+    },
+    directToPokemonDetails(pokemon: Pokemon): void {
+      this.$store.dispatch('general/setPokemon', pokemon);
+      this.setRouter('pokemonDetailsPage');
+    },
+    setRouter(path: string) {
+      this.$router.push(path).catch(() => {});
     },
   },
 });
