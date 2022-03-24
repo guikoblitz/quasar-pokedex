@@ -1,6 +1,6 @@
 import PokemonService from 'src/services/PokemonService';
 import { Pokemon, PokemonType } from 'src/classes/Pokemon';
-import { getPokemonIdByUrlString, formatFirstLetterToUpperCase } from 'src/util/AppUtil';
+import { getPokemonIdByUrlString, formatPokemonName } from 'src/util/AppUtil';
 import PokemonApiRaw from 'src/classes/PokemonApiRaw';
 
 export default {
@@ -19,7 +19,7 @@ export default {
           if (pokemonApi) {
             const pokemon = {} as Pokemon;
             pokemon.id = pokemonApi.id;
-            pokemon.name = formatFirstLetterToUpperCase(pokemonApi.name);
+            pokemon.name = formatPokemonName(pokemonApi.name);
             pokemon.image = pokemonApi.sprites.other['official-artwork'].front_default;
             pokemon.type = {} as PokemonType;
 
@@ -61,7 +61,7 @@ export default {
   pokemonConstructor(pokemonApi: PokemonApiRaw): Pokemon {
     const pokemon = {} as Pokemon;
     pokemon.id = pokemonApi.id;
-    pokemon.name = formatFirstLetterToUpperCase(pokemonApi.name);
+    pokemon.name = formatPokemonName(pokemonApi.name);
     pokemon.image = pokemonApi.sprites.other['official-artwork'].front_default;
     pokemon.type = {} as PokemonType;
 

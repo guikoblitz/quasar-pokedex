@@ -13,9 +13,12 @@ export default defineComponent({
       lastPokemon: 0,
       text: '',
       isFiltered: false,
+      isDetailsOpening: false,
     };
   },
   async mounted() {
+    this.isDetailsOpening = false;
+    this.$store.dispatch('general/setPokemon', null);
     this.getNextPokemon();
     await this.initialQuery();
   },
@@ -61,7 +64,7 @@ export default defineComponent({
     getNextPokemon(): void {
       window.onscroll = async () => {
         const bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
-        if (bottomOfWindow) {
+        if (bottomOfWindow && !this.isDetailsOpening) {
           Loading.show({ message: 'Loading more Pokémon...' });
           const newPokemons = await PokemonCtrl.getPokemons(30, this.lastPokemon);
           newPokemons.forEach((pokemon) => this.pokemonList.push(pokemon));
@@ -80,6 +83,7 @@ export default defineComponent({
       return `types/${typeLower}.svg`;
     },
     directToPokemonDetails(pokemon: Pokemon): void {
+      this.isDetailsOpening = true;
       this.$store.dispatch('general/setPokemon', pokemon);
       this.setRouter('pokemonDetailsPage');
     },

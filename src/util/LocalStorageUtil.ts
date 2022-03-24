@@ -9,8 +9,8 @@ export default class Storage {
       let db: LocalForage;
 
       const config = {
-        name: 'totem',
-        storeName: 'totemFrenteMercado',
+        name: 'quasarPokedex',
+        storeName: 'quasarPokedex',
         driverOrder: ['sqlite', 'indexeddb', 'websql', 'localstorage'],
       };
 

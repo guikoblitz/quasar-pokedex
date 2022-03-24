@@ -1,4 +1,4 @@
-export function formatFirstLetterToUpperCase(value: string) {
+export function formatPokemonName(value: string) {
   const pokemonNameSplit = value.split('-');
   let pokemonName = pokemonNameSplit[0];
   if (pokemonNameSplit[1] === 'm') {
@@ -30,7 +30,11 @@ export function formatFirstLetterToUpperCase(value: string) {
   } else if (pokemonNameSplit[1] === 'totem') {
     pokemonName += ' Totem';
   }
-  return pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1);
+  return formatFirstLetterToUpperCase(pokemonName);
+}
+
+export function formatFirstLetterToUpperCase(value: string) {
+  return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
 export function getPokemonIdByUrlString(url: string) {

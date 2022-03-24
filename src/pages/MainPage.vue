@@ -91,8 +91,12 @@
   transform: rotate(-12deg);
 }
 
+/* .filter-red {
+  filter: invert(25%) sepia(88%) saturate(4575%) hue-rotate(4deg) brightness(96%) contrast(90%);
+} */
+
 .pokemon-card {
-  /* box-shadow: 0 1px 5px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%); */
+  box-shadow: 0 1px 5px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%);
   border-radius: 20px;
   vertical-align: top;
   position: relative;
