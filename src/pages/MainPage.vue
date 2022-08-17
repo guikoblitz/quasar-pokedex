@@ -1,8 +1,8 @@
 <template>
-  <q-page class="page-padding" style="background: #f5f5f5; overflow: hidden; height: calc(100vh - 100px)">
+  <q-page class="page-padding" style="background: #f5f5f5; overflow: hidden; height: 100vh">
     <img src="../assets/background.svg" class="common-background" />
     <!-- <span class="q-pt-md text-h4 text-bold text-accent"> Pokédex </span> -->
-    <q-card class="details-card row q-px-md">
+    <q-card class="container-card row q-px-md">
       <div class="col-12 col-md-6 col-lg-5 q-my-sm" style="height: calc(100% - 24px); overflow: hidden">
         <q-input
           style="padding: 12px 12px 6px 12px"
@@ -59,7 +59,23 @@
           </q-list>
         </div>
       </div>
-      <div class="col-12 col-md-6 col-lg-7" style="padding-left: 24px"></div>
+      <div class="col-12 col-md-6 col-lg-7" style="padding: 16px 24px">
+        <q-card v-if="selectedPokemon" class="details-card">
+          <div
+            class="row"
+            style="display: flex; justify-content: space-between; border-radius: 15px 15px 90% 90%"
+            :style="selectedPokemon ? getPokemonBackgroundColor(selectedPokemon.type.primary) : ''"
+          >
+            <div class="col-2" style="padding-top: 24px; padding-left: 24px">
+              <span class="text-h5 text-bold text-white">
+                {{ formatPokemonId(selectedPokemon.id) }}
+              </span>
+            </div>
+            <q-img :src="selectedPokemon.image" class="pokemon-image-size" />
+            <div class="col-2"></div>
+          </div>
+        </q-card>
+      </div>
     </q-card>
 
     <!-- <q-page-sticky position="bottom-right" :offset="[18, 18]">
@@ -90,13 +106,33 @@
   padding: 0px 12vw;
 }
 
+.container-card {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: none;
+  background: #f5f5f5;
+  margin-top: 24px;
+  height: calc(100vh - 48px);
+  overflow: hidden;
+}
+
 .details-card {
   width: 100%;
   height: 100%;
-  border-radius: 0px;
-  background: #f5f5f5;
-  height: calc(100vh - 100px);
-  overflow: hidden;
+  border-radius: 15px;
+  /* background: #f5f5f5; */
+}
+
+.pokemon-image-size {
+  height: 200px;
+  width: 200px;
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pokemon-image-size {
+    height: 100px;
+    width: 100px;
+  }
 }
 
 .common-background {
@@ -118,10 +154,6 @@
   white-space: nowrap;
   transform: rotate(-12deg);
 }
-
-/* .filter-red {
-  filter: invert(25%) sepia(88%) saturate(4575%) hue-rotate(4deg) brightness(96%) contrast(90%);
-} */
 
 .pokemon-card {
   box-shadow: 0 1px 5px rgb(0 0 0 / 20%), 0 2px 2px rgb(0 0 0 / 14%), 0 3px 1px -2px rgb(0 0 0 / 12%);

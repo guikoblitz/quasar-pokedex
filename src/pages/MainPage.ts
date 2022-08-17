@@ -17,6 +17,14 @@ export default defineComponent({
       isMobile: false,
     };
   },
+  computed: {
+    selectedPokemon() {
+      if (this.$store.state.general.pokemon) {
+        return this.$store.state.general.pokemon;
+      }
+      return null;
+    },
+  },
   created() {
     this.isMobile = this.$q.platform.is.mobile ? true : false;
   },
@@ -38,6 +46,9 @@ export default defineComponent({
       try {
         Loading.show({ message: 'Loading Pokémon...' });
         this.pokemonList = await PokemonCtrl.getPokemons();
+        if (this.pokemonList && this.pokemonList.length > 0) {
+          this.$store.dispatch('general/setPokemon', this.pokemonList[0]);
+        }
         this.getLastPokemonId();
         this.isFiltered = false;
         this.text = '';
@@ -87,12 +98,16 @@ export default defineComponent({
       return `types/${typeLower}.svg`;
     },
     directToPokemonDetails(pokemon: Pokemon): void {
-      this.isDetailsOpening = true;
+      // this.isDetailsOpening = true;
       this.$store.dispatch('general/setPokemon', pokemon);
-      this.setRouter('pokemonDetailsPage');
+      // this.setRouter('pokemonDetailsPage');
     },
     setRouter(path: string) {
       this.$router.push(path).catch(() => {});
+    },
+    getPokemonBackgroundColor(primaryType: string): string {
+      const type = primaryType.toUpperCase();
+      return `background: ${POKEMON_TYPES_CARD[type]}`;
     },
   },
 });
